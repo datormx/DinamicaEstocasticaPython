@@ -1,7 +1,11 @@
 
 from borracho import BorrachoTradicional
+from borracho import BorrachoTodasDirecciones
+from borracho import BorrachoAvanzaMasRetrocedeMenos
 from campo import Campo
 from coordenada import Coordenada
+
+from bokeh.plotting import figure, show
 
 
 def caminata(campo, borracho, pasos):
@@ -10,7 +14,7 @@ def caminata(campo, borracho, pasos):
     for _ in range(pasos):
         campo.mover_borracho(borracho)
     
-    return inicio.distancia(campo.obtener_coordenada(borracho))
+    return inicio.distancia(campo.obtener_coordenada(borracho)) #Inicio es una instancia coordenada.Coordenada porque el método obtener_coordenada retorna un valor del diccionario de la forma Coordenada con el nombre coordenada
 
 
 def simular_caminata(pasos, numero_de_intentos, tipo_de_borracho):
@@ -27,20 +31,33 @@ def simular_caminata(pasos, numero_de_intentos, tipo_de_borracho):
     return distancias
 
 
+def graficar(x, y):
+    grafica = figure(title='Camino aleatorio de borracho', x_axis_label='pasos', y_axis_label='distancia recorrida')
+    grafica.line(x, y, legend_label='distancia media')
+
+    show(grafica)
+
+
 def main(distancias_de_caminata, numero_de_intentos, tipo_de_borracho):
     
+    distancias_media_por_caminata = [] #Se guardan las distancias media para la grafica x,y
+
     for pasos in distancias_de_caminata:
         distancias = simular_caminata(pasos, numero_de_intentos, tipo_de_borracho)
         distancia_media = round(sum(distancias) / len(distancias), 4)
         distancia_maxima = max(distancias)
         distancia_minima = min(distancias)
+        distancias_media_por_caminata.append(distancia_media)
+        
         print(f'{tipo_de_borracho.__name__} caminata aleatoria de {pasos} pasos')
         print(f'Media = {distancia_media}')
         print(f'Max = {distancia_maxima}')
-        print(f'Max = {distancia_minima}')
+        print(f'Min = {distancia_minima}')
+    
+    graficar(distancias_de_caminata, distancias_media_por_caminata)
 
 if __name__ == "__main__":
     distancias_de_caminata = [10, 100, 1000, 10000]
     numero_de_intentos = 100
 
-    main(distancias_de_caminata, numero_de_intentos, BorrachoTradicional)
+    main(distancias_de_caminata, numero_de_intentos, BorrachoAvanzaMasRetrocedeMenos)

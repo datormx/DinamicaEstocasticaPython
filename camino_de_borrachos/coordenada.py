@@ -7,7 +7,7 @@ class Coordenada:
         
     
     def mover(self, delta_x, delta_y):
-        return Coordenada(self.x + + delta_x, self.y + delta_y)
+        return Coordenada(self.x + delta_x, self.y + delta_y)
 
     
     def distancia(self, otra_coordenada):

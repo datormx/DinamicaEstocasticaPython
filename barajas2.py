@@ -42,25 +42,15 @@ def obtener_corridas(manos):
         for carta in mano:
             valores.append(carta[1])
 
-        counter = dict(collections.Counter(valores))
-        
-        mano_corrida = []
-        for valor_carta, cantidad in counter.items():    
-            if cantidad > 1:
-                break #No puede haber un VALOR de carta con más de una carta en la mano.
-            elif cantidad == 1:
-                mano_corrida.append(valor_carta) 
+        valores.sort() #Ordena la mano por sus valores para comprobar si son corrida.
 
-        if len(mano_corrida) == tamano_mano: #Verifica que la mano donde puede estar la corrida (mano_corrida) se haya completado con 5 cartas únicas           
-            mano_corrida.sort() #ordena las cartas únicas de la corrida para comprobar si es corrida
-
-            es_corrida = True
-            for i in range(len(mano_corrida) - 1): #recorre la mano para verificar si cada carta siguiente es mayor por 1 a la anterior. De serlo en todas las cartas será corrida
-                if mano_corrida[i] != mano_corrida[i+1] - 1:
-                    es_corrida = False
-                    break            
-            if es_corrida:
-                corridas += 1
+        es_corrida = True
+        for i in range(len(valores) - 1):  #recorre la mano para verificar si cada carta siguiente es mayor por 1 a la anterior. De serlo en todas las cartas será corrida
+            if valores[i] != valores[i+1] - 1:
+                es_corrida = False
+            
+        if es_corrida:
+            corridas += 1    
 
     return corridas
 

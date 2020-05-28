@@ -16,8 +16,8 @@ def main(numero_de_tiros, numero_de_intentos):
         tiros.append(secuencia_de_tiros)
 
     tiros_con_1 = 0
-    for tiro in tiros:
-        if 1 in tiro:
+    for tiro in tiros:  #Un tiro es una secuencia de (numero_de_tiros) tiros.
+        if 1 in tiro:   #Si hay uno o más 1 dentro de los tiros se cuenta que el tiro tuvo uno o más 1.
             tiros_con_1 += 1
 
     tiros_sin_1 = 0

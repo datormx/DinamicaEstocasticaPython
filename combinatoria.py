@@ -54,35 +54,35 @@ def combinaciones_con_repeticion(m, n):
 
 
 def main(opcion):
-    total_de_elementos = int(input('¿Cuál es el tamaño de tu muestra de elementos? '))
+    total_de_elementos = int(input('¿Cuál es el tamaño de tu muestra de elementos = m? '))
 
     if opcion == 'a':
-        tamano_variaciones = int(input('¿De qué tamaño serán las variaciones? '))
-        variaciones = variaciones_sin_repeticion(total_de_elementos, tamano_variaciones)
-        print(f'Variaciones sin repetición = {variaciones}')
+        tamano_variaciones = int(input('¿Cuántos elementos habrá en cada variación? '))
+        total_variaciones = variaciones_sin_repeticion(total_de_elementos, tamano_variaciones)
+        print(f'Variaciones sin repetición = {total_variaciones}')
     
     elif opcion == 'b':
-        tamano_variaciones = int(input('¿De qué tamaño serán las variaciones? '))
-        variaciones = variaciones_con_repeticion(total_de_elementos, tamano_variaciones)
-        print(f'Variaciones con repetición = {variaciones}')
+        tamano_variaciones = int(input('¿Cuántos elementos habrá en cada variación? '))
+        total_variaciones = variaciones_con_repeticion(total_de_elementos, tamano_variaciones)
+        print(f'Variaciones con repetición = {total_variaciones}')
         
     elif opcion == 'c':
-        permutaciones = permutaciones_sin_repeticion(total_de_elementos)
-        print(f'Permutaciones sin repetición = {permutaciones}')
+        total_permutaciones = permutaciones_sin_repeticion(total_de_elementos)
+        print(f'Permutaciones sin repetición = {total_permutaciones}')
 
     elif opcion == 'd':
-        permutaciones = permutaciones_con_repeticion(total_de_elementos)
-        print(f'Permutaciones con repetición = {permutaciones}')
+        total_permutaciones = permutaciones_con_repeticion(total_de_elementos)
+        print(f'Permutaciones con repetición = {total_permutaciones}')
 
     elif opcion == 'e':
-        tamano_combinaciones = int(input('¿De qué tamaño serán las combinaciones? '))
-        combinaciones = combinaciones_sin_repeticion(total_de_elementos, tamano_combinaciones)
-        print(f'Combinaciones sin repetición = {combinaciones}')
+        tamano_combinaciones = int(input('¿Cuántos elementos habrá en cada combinación? '))
+        total_combinaciones = combinaciones_sin_repeticion(total_de_elementos, tamano_combinaciones)
+        print(f'Combinaciones sin repetición = {total_combinaciones}')
 
     elif opcion == 'f':
-        tamano_combinaciones = int(input('¿De qué tamaño serán las combinaciones? '))
-        combinaciones = combinaciones_con_repeticion(total_de_elementos, tamano_combinaciones)
-        print(f'Combinaciones con repetición = {combinaciones}')
+        tamano_combinaciones = int(input('¿¿Cuántos elementos habrá en cada combinación? '))
+        total_combinaciones = combinaciones_con_repeticion(total_de_elementos, tamano_combinaciones)
+        print(f'Combinaciones con repetición = {total_combinaciones}')
 
     elif opcion == 'g':
         factorial_calculado = factorial(total_de_elementos)

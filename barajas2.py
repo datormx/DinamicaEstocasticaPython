@@ -15,6 +15,7 @@ def crear_baraja():
 
 def obtener_mano(barajas, tamano_mano):
     mano = random.sample(barajas, tamano_mano)
+    print(mano)
 
     return mano
 
@@ -24,7 +25,7 @@ def obtener_pares(manos):
     for mano in manos:
         valores = []
         for carta in mano:
-            valores.append(carta[1])
+            valores.append(carta[1])#Solo se agrega el valor de la carta sin su tipo de palo.
 
         counter = dict(collections.Counter(valores))
         for cantidad in counter.values():
